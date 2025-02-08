@@ -1,60 +1,60 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Página - Primeiro Beijo</title>
+    <title>Primeiro Beijo</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>💖 Primeirobeijo.com 💖</h1>
-    </header>
 
-    <section class="form-container">
-        <h2>Preencha os detalhes do casal</h2>
-        <form id="loveForm">
-            <label for="names">Nome do casal:</label>
-            <input type="text" id="names" placeholder="Ex: Leonardo e Vitória" required>
+<header>💖 Primeiro Beijo 💖</header>
 
-            <label for="photos">Envie 3 fotos do casal:</label>
-            <input type="file" id="photos" accept="image/*" multiple required>
+<div class="form-container">
+    <h1>Crie sua Página Romântica</h1>
 
-            <label for="startDate">Data de início do namoro:</label>
-            <input type="date" id="startDate" required>
+    <form id="loveForm">
+        <label for="names">Nome do Casal:</label>
+        <input type="text" id="names" name="names" required>
 
-            <label for="romanticMessage">Mensagem romântica:</label>
-            <textarea id="romanticMessage" placeholder="Escreva algo especial..." required></textarea>
+        <label for="romanticMessage">Mensagem Romântica:</label>
+        <textarea id="romanticMessage" name="romanticMessage" required></textarea>
 
-            <label for="youtubeLink">Música especial (YouTube):</label>
-            <input type="text" id="youtubeLink" placeholder="Cole o link do vídeo">
+        <label for="photos">Envie 3 Fotos:</label>
+        <input type="file" id="photos" name="photos[]" multiple accept="image/*" required>
 
-            <label for="plan">Escolha um plano:</label>
-            <select id="plan">
-                <option value="1ano">R$ 14,99 - 1 ano</option>
-                <option value="sempre">R$ 29,99 - Para sempre</option>
-            </select>
+        <label for="youtubeLink">Link do YouTube:</label>
+        <input type="text" id="youtubeLink" name="youtubeLink">
 
-            <button type="button" id="criarPaginaBtn">Criar Página</button>
-        </form>
-    </section>
+        <label for="startDate">Data do Namoro:</label>
+        <input type="date" id="startDate" name="startDate" required>
 
-    <section class="preview-container">
-        <h2>Pré-visualização</h2>
-        <div class="preview-box">
-            <h3 id="preview-names"></h3>
-            <div id="photo-slider"></div>
-            <p id="sinceTitle">💖 Estamos juntos desde:</p>
-            <p id="countdown"></p>
-            <p id="preview-message"></p>
-            <iframe id="preview-video" style="display:none;" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
+        <label for="plan">Escolha o Plano:</label>
+        <select id="plan" name="plan">
+            <option value="1ano">R$ 14,99 (1 Ano)</option>
+            <option value="sempre">R$ 29,99 (Para Sempre)</option>
+        </select>
 
-    <!-- Corações subindo -->
-    <div class="hearts-container"></div>
+        <button type="submit" id="criarPaginaBtn">Criar Página</button>
+    </form>
+</div>
 
-    <script src="script.js"></script>
+<!-- Pré-visualização -->
+<div class="preview-container">
+    <h2>Prévia da Página</h2>
+    <p id="preview-names"></p>
+    <p id="preview-message"></p>
+    <div id="photo-slider"></div>
+    <iframe id="preview-video" width="100%" height="200" style="display:none;"></iframe>
+    <div id="countdown"></div>
+</div>
+
+<!-- QR Code e pagamento -->
+<div id="pagamento-container" style="display:none;">
+    <h2>Pague com Pix</h2>
+    <img id="qrCodePix" style="display:none;" />
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>

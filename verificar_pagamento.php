@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-$payment_id = $_GET['id']; // ID do pagamento vindo da notificação
+$payment_id = $_GET['id'];
 
 $url = "https://api.mercadopago.com/v1/payments/$payment_id";
 $options = [
@@ -16,8 +16,8 @@ $response = file_get_contents($url, false, $context);
 $pagamento = json_decode($response, true);
 
 if ($pagamento['status'] == "approved") {
-    echo json_encode(["status" => "paid", "message" => "Pagamento confirmado!"]);
+    echo json_encode(["status" => "paid"]);
 } else {
-    echo json_encode(["status" => "pending", "message" => "Aguardando pagamento..."]);
+    echo json_encode(["status" => "pending"]);
 }
 ?>
