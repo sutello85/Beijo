@@ -1,21 +1,23 @@
 {
   "name": "Nosso Amor",
   "short_name": "Nosso Amor",
-  "start_url": "./",
+  "start_url": "/Beijo/index.html",
   "display": "standalone",
   "background_color": "#ffe6e6",
-  "theme_color": "#ffc6d1",
+  "theme_color": "#6b0524",
   "description": "Contador do nosso amor",
   "icons": [
     {
-      "src": "IMG_20241231_234936.jpg",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "IMG_20241231_234936.jpg",
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
