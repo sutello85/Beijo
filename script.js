@@ -4,12 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnEntrar = document.getElementById('btn-entrar');
     const introScreen = document.getElementById('intro-screen');
     const mainContent = document.getElementById('main-content');
-    const youtubeContainer = document.getElementById('youtube-container');
     const tituloPrincipal = document.getElementById('titulo-principal');
     const chuvaConfetes = document.getElementById('chuva-confetes');
-    
-    // 👇👇 COLE O ID DO VÍDEO DA MÚSICA AQUI 👇👇
-    const videoId = "FEpuC98wcXE"; 
 
     // INTELIGÊNCIA MODO NOTURNO
     const horaAtual = new Date().getHours();
@@ -42,10 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // CLIQUE DE ENTRADA E MÚSICA
+    // CLIQUE DE ENTRADA E MÚSICA (AGORA COM MP3)
     btnEntrar.addEventListener('click', () => {
         introScreen.classList.add('zoom-out');
-        youtubeContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&controls=0&showinfo=0&autohide=1" allow="autoplay"></iframe>`;
+        
+        // Toca a música em MP3 sem nenhum anúncio!
+        const musica = document.getElementById('musica-fundo');
+        musica.volume = 0.6; // Começa com 60% do volume para não assustar
+        musica.play();
         
         setTimeout(() => {
             introScreen.style.display = 'none';
@@ -100,31 +100,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function atualizarCapsula() {
         const hoje = new Date();
-        // Quantos anos completos se passaram desde 2024?
         let anosCompletos = hoje.getFullYear() - 2024;
         
-        // Se ainda não chegou 11 de Abril no ano atual, tira 1 ano da conta
         if (hoje < new Date(hoje.getFullYear(), 3, 11)) { 
             anosCompletos--; 
         }
 
-        // A meta é no mínimo 2 anos.
         let metaAtual = Math.max(2, anosCompletos); 
-        
-        // Verifica na memória se ela já leu a cápsula deste ano
         let isGuardada = localStorage.getItem('capsula_guardada_' + metaAtual) === 'true';
 
         if (anosCompletos >= 2 && !isGuardada) {
-            // CHEGOU A DATA! Pode abrir!
             btnCapsula.innerText = `🎁 Abrir Cápsula (${metaAtual} Anos)`;
             btnCapsula.style.background = "rgba(255, 105, 180, 0.4)";
             btnCapsula.style.border = "1px solid #ff69b4";
             
             btnCapsula.onclick = () => {
-                // Pega a frase do ano (se não existir, cria uma automática)
                 let texto = textosCapsula[metaAtual] || `Feliz ${metaAtual} Anos, meu amor! Cada ano ao seu lado é mais mágico que o anterior. ❤️`;
                 
-                // Mostra o texto e o botão de Trancar para o próximo ano
                 msgCapsula.innerHTML = `
                     <p style="margin-bottom: 15px;">${texto}</p>
                     <button id="btn-fechar-capsula" class="btn-romantico" style="width: 100%; font-size: 0.85rem; padding: 10px;">
@@ -133,15 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 msgCapsula.classList.remove('hidden');
 
-                // Ação do botão "Trancar"
                 document.getElementById('btn-fechar-capsula').onclick = () => {
-                    localStorage.setItem('capsula_guardada_' + metaAtual, 'true'); // Salva na memória
-                    msgCapsula.classList.add('hidden'); // Esconde o texto
-                    atualizarCapsula(); // Recarrega o botão principal
+                    localStorage.setItem('capsula_guardada_' + metaAtual, 'true'); 
+                    msgCapsula.classList.add('hidden'); 
+                    atualizarCapsula(); 
                 };
             };
         } else {
-            // AINDA NÃO CHEGOU A DATA (Ou ela já leu a deste ano)
             let proximoMarco = anosCompletos < 2 ? 2 : metaAtual + 1;
             let anoAbertura = 2024 + proximoMarco;
             
@@ -159,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
     }
-    atualizarCapsula(); // Inicia o botão na tela
+    atualizarCapsula(); 
 
     // LÓGICA DO CONTADOR GERAL
     const dataInicial = new Date(2024, 3, 11); 
