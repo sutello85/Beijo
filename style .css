@@ -1,0 +1,240 @@
+/* Reset e Fontes */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Fundo degradê super moderno e romântico (Rosa escuro para Vinho) */
+  background: linear-gradient(135deg, #880e4f, #4a0024);
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* === TELA INICIAL === */
+#intro-screen {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2b0011, #6b0524);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 100; 
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s;
+}
+
+#intro-screen.zoom-out { 
+  transform: scale(20); 
+  opacity: 0; 
+  pointer-events: none; 
+}
+
+.intro-texto { 
+  font-size: 1.3rem; font-weight: 300; margin-bottom: 40px; text-align: center; 
+  letter-spacing: 2px;
+}
+
+.dica-volume { 
+  margin-top: 50px; font-size: 0.9rem; font-weight: 300; opacity: 0.8; 
+  animation: pulse 2s infinite; 
+  background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 20px;
+}
+
+.heart-photo {
+  width: 220px; height: 220px;
+  background-image: url('IMG_20241231_234936.jpg');
+  background-size: cover; background-position: center;
+  /* Máscara responsiva de coração perfeito */
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  -webkit-mask-size: cover; -webkit-mask-position: center;
+  animation: heartbeat 1.5s infinite alternate; 
+  cursor: pointer;
+  filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.6));
+}
+
+/* === APP PRINCIPAL (EFEITO VIDRO / GLASSMORPHISM) === */
+#main-content {
+  display: flex; align-items: center; justify-content: center; 
+  min-height: 100vh; padding: 20px;
+  opacity: 1; transition: opacity 2s ease-in;
+}
+
+#main-content.hidden { opacity: 0; display: none; }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05); /* Fundo quase transparente */
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); /* Efeito Vidro Fosco */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px; padding: 40px 25px; width: 100%; max-width: 400px;
+  text-align: center; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.foto-perfil {
+  width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.titulo { 
+  font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; 
+  text-transform: uppercase; letter-spacing: 3px; color: #ffb3c6;
+}
+
+.contador {
+  font-size: 1.1rem; font-weight: 300; line-height: 1.8;
+  background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 15px; margin-bottom: 20px;
+}
+
+.linha-divisoria {
+  height: 1px; width: 50%; background: rgba(255,255,255,0.2); 
+  margin: 20px auto;
+}
+
+.texto-romantico { 
+  font-size: 1rem; font-weight: 300; line-height: 1.7; min-height: 140px; 
+  text-align: left; padding: 0 10px;
+}
+
+#cursor { animation: blink 1s infinite; font-weight: bold; }
+
+/* === UTILITÁRIOS === */
+.video-invisivel {
+  position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; overflow: hidden;
+}
+
+/* Palavras Flutuantes no Fundo */
+.floating { 
+  position: fixed; bottom: -10vh; z-index: 1; opacity: 0.3; 
+  animation: floatUp linear infinite; color: #ffb3c6; font-weight: 600;
+}
+
+/* Animações */
+@keyframes heartbeat { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes floatUp { to { transform: translateY(-120vh) rotate(15deg); opacity: 0; } }
+
+/* === IDEIA 2: BOTÃO DOS MOTIVOS === */
+.btn-romantico {
+  background: rgba(255, 105, 180, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-romantico:active { transform: scale(0.95); background: rgba(255, 105, 180, 0.4); }
+
+.motivo-secreto {
+  font-size: 0.95rem; font-style: italic; color: #ffb3c6;
+  min-height: 50px; transition: opacity 0.5s ease;
+  margin-bottom: 10px; padding: 0 10px;
+}
+
+/* === IDEIA 1: CHUVA DE CONFETES NO DIA 11 === */
+#chuva-confetes {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 999;
+}
+
+.invisivel { display: none !important; }
+
+.confete-caindo {
+  position: absolute; top: -10vh;
+  font-size: 24px; animation: cair linear forwards;
+}
+
+@keyframes cair {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+/* Reset e Fontes */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #880e4f, #4a0024); /* Dia: Rosa/Vinho */
+  color: #fff; overflow-x: hidden; min-height: 100vh;
+  transition: background 1.5s ease;
+}
+
+/* IDEIA 5: MODO NOTURNO CÉU ESTRELADO */
+body.night-mode { background: linear-gradient(135deg, #020617, #1e1b4b); }
+#intro-screen.night-mode { background: linear-gradient(135deg, #000000, #0f172a); }
+.night-mode .glass-card { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+/* Tela Inicial */
+#intro-screen {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, #2b0011, #6b0524);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 100; transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s, background 1.5s;
+}
+#intro-screen.zoom-out { transform: scale(20); opacity: 0; pointer-events: none; }
+
+.intro-texto { font-size: 1.3rem; font-weight: 300; margin-bottom: 40px; text-align: center; letter-spacing: 2px; }
+.dica-volume { margin-top: 50px; font-size: 0.9rem; font-weight: 300; opacity: 0.8; animation: pulse 2s infinite; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 20px; }
+
+.heart-photo {
+  width: 220px; height: 220px;
+  background-image: url('IMG_20241231_234936.jpg'); background-size: cover; background-position: center;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  -webkit-mask-size: cover; -webkit-mask-position: center;
+  animation: heartbeat 1.5s infinite alternate; cursor: pointer;
+  filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.6));
+}
+
+/* App Principal */
+#main-content { display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; opacity: 1; transition: opacity 2s ease-in; position: relative; }
+#main-content.hidden { opacity: 0; display: none; }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 25px; padding: 40px 25px; 
+  width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); z-index: 10; margin-top: 50px;
+}
+
+.foto-perfil { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.titulo { font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; color: #ffb3c6; }
+.contador { font-size: 1.1rem; font-weight: 300; line-height: 1.8; background: rgba(0, 0, 0, 0.2); padding: 20px; border-radius: 15px; margin-bottom: 20px; }
+.linha-divisoria { height: 1px; width: 50%; background: rgba(255,255,255,0.2); margin: 20px auto; }
+.texto-romantico { font-size: 1rem; font-weight: 300; line-height: 1.7; min-height: 140px; text-align: left; padding: 0 10px; }
+#cursor { animation: blink 1s infinite; font-weight: bold; }
+
+/* Botões Interativos */
+.btn-romantico { background: rgba(255, 105, 180, 0.2); border: 1px solid rgba(255, 255, 255, 0.4); color: white; font-family: 'Poppins', sans-serif; padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
+.btn-romantico:active { transform: scale(0.95); }
+.motivo-secreto { font-size: 0.95rem; font-style: italic; color: #ffb3c6; min-height: 50px; padding: 0 10px; }
+
+/* IDEIA 3: Cápsula do Tempo */
+.btn-capsula { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: inherit; padding: 12px 20px; border-radius: 15px; cursor: pointer; transition: 0.3s; width: 100%; font-size: 0.9rem; }
+.btn-capsula.shake { animation: shakeError 0.4s ease-in-out; background: rgba(220, 53, 69, 0.6); border-color: transparent; }
+.mensagem-capsula { margin-top: 15px; font-size: 0.95rem; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; border-left: 4px solid #ff69b4; text-align: left; line-height: 1.6; }
+
+/* IDEIA 4: Equalizador animado */
+.equalizador { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.8); position: absolute; top: 20px; background: rgba(0,0,0,0.4); padding: 8px 15px; border-radius: 20px; backdrop-filter: blur(5px); z-index: 10; }
+.bars { display: flex; gap: 3px; height: 12px; align-items: flex-end; }
+.bar { width: 3px; background: #ffb3c6; animation: bounce 1s infinite alternate; }
+.bar:nth-child(2) { animation-delay: 0.2s; }
+.bar:nth-child(3) { animation-delay: 0.4s; }
+.bar:nth-child(4) { animation-delay: 0.6s; }
+
+/* Utilitários e Animações */
+.video-invisivel { position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none; overflow: hidden; }
+.floating { position: fixed; bottom: -10vh; z-index: 1; opacity: 0.5; animation: floatUp linear infinite; color: #ffb3c6; font-weight: 600; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+.invisivel { display: none !important; }
+.hidden { display: none !important; }
+
+#chuva-confetes { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; }
+.confete-caindo { position: absolute; top: -10vh; font-size: 24px; animation: cair linear forwards; }
+
+@keyframes heartbeat { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes floatUp { to { transform: translateY(-120vh) rotate(15deg); opacity: 0; } }
+@keyframes bounce { 0% { height: 3px; } 100% { height: 12px; } }
+@keyframes shakeError { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 50% { transform: translateX(8px); } 75% { transform: translateX(-8px); } }
+@keyframes cair { to { transform: translateY(110vh) rotate(360deg); } }

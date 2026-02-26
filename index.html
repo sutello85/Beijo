@@ -1,60 +1,63 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeiro Beijo</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Nosso Amor</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6b0524">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>💖 Primeiro Beijo 💖</header>
+  <div id="chuva-confetes" class="invisivel"></div>
 
-<div class="form-container">
-    <h1>Crie sua Página Romântica</h1>
+  <div id="intro-screen">
+    <div class="intro-texto">Para a mulher da minha vida...</div>
+    <div class="heart-photo" id="btn-entrar"></div>
+    <div class="dica-volume">🔊 Aumente o volume e toque no coração</div>
+  </div>
 
-    <form id="loveForm">
-        <label for="names">Nome do Casal:</label>
-        <input type="text" id="names" name="names" required>
+  <div id="main-content" class="hidden">
+      
+    <div id="equalizador" class="equalizador">
+      <span>Tocando a nossa música</span>
+      <div class="bars">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
+    </div>
 
-        <label for="romanticMessage">Mensagem Romântica:</label>
-        <textarea id="romanticMessage" name="romanticMessage" required></textarea>
+    <div class="glass-card">
+      <img src="IMG_20241231_234936.jpg" alt="Vitórya e Eu" class="foto-perfil">
+      
+      <div id="titulo-principal" class="titulo">Nosso Tempo</div>
+      <div id="contador" class="contador">Calculando...</div>
+      
+      <div class="linha-divisoria"></div>
+      
+      <button id="btn-motivos" class="btn-romantico">✨ Por que eu te amo?</button>
+      <div id="motivo-texto" class="motivo-secreto">Clique no botão acima...</div>
 
-        <label for="photos">Envie 3 Fotos:</label>
-        <input type="file" id="photos" name="photos[]" multiple accept="image/*" required>
+      <div class="linha-divisoria"></div>
+      
+      <div class="texto-romantico">
+        <span id="texto-digitado"></span><span id="cursor">|</span>
+      </div>
 
-        <label for="youtubeLink">Link do YouTube:</label>
-        <input type="text" id="youtubeLink" name="youtubeLink">
+      <div class="linha-divisoria"></div>
 
-        <label for="startDate">Data do Namoro:</label>
-        <input type="date" id="startDate" name="startDate" required>
+      <div class="capsula-container">
+        <button id="btn-capsula" class="btn-capsula">🔒 Cápsula do Tempo (2 Anos)</button>
+        <div id="mensagem-capsula" class="mensagem-capsula hidden">
+          Feliz 2 Anos de Namoro, meu amor! Obrigado por ser a mulher mais incrível do mundo. Cada segundo com você é um presente. Que venham todos os anos de nossas vidas juntos! Te amo infinitamente! ❤️🎉
+        </div>
+      </div>
 
-        <label for="plan">Escolha o Plano:</label>
-        <select id="plan" name="plan">
-            <option value="1ano">R$ 14,99 (1 Ano)</option>
-            <option value="sempre">R$ 29,99 (Para Sempre)</option>
-        </select>
+    </div>
+  </div>
 
-        <button type="submit" id="criarPaginaBtn">Criar Página</button>
-    </form>
-</div>
-
-<!-- Pré-visualização -->
-<div class="preview-container">
-    <h2>Prévia da Página</h2>
-    <p id="preview-names"></p>
-    <p id="preview-message"></p>
-    <div id="photo-slider"></div>
-    <iframe id="preview-video" width="100%" height="200" style="display:none;"></iframe>
-    <div id="countdown"></div>
-</div>
-
-<!-- QR Code e pagamento -->
-<div id="pagamento-container" style="display:none;">
-    <h2>Pague com Pix</h2>
-    <img id="qrCodePix" style="display:none;" />
-</div>
-
-<script src="script.js"></script>
-
+  <div id="youtube-container" class="video-invisivel"></div>
+  <script src="script.js"></script>
 </body>
 </html>
